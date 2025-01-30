@@ -1,15 +1,18 @@
-package org.s15challange;
+package org.s15challange.person;
 
 public abstract class Person {
     private String name;
 
-    public abstract void whoYouAre();
-
+    //Constructors
     public Person(String name) {
         this.name = name;
     }
 
+    //Getters
     public String getName() {
         return name;
     }
+
+    //Methods
+    public abstract void whoYouAre();
 }

@@ -1,27 +1,65 @@
 package org.s15challange;
-
-
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class MemberRecord {
     private int memberId;
-    private String type;  // Öğrenci veya akademik personel
+    private Type type;
     private Date dateOfMembership;
     private int noBooksIssued;  // Ödünç alınan kitap sayısı
-    private int maxBookLimit;  // Maksimum kitap ödünç alma limiti
+    private int maxBookLimit;
     private String name;
     private String address;
     private String phoneNo;
 
     // Constructor
-    public MemberRecord(int memberId, String type, String name, String address, String phoneNo) {
+    public MemberRecord(int memberId, Type type, String name, String address, String phoneNo) {
         this.memberId = memberId;
         this.type = type;
         this.name = name;
         this.address = address;
         this.phoneNo = phoneNo;
         this.noBooksIssued = 0;
+        this.maxBookLimit = 5;
+        this.dateOfMembership = new Date();
     }
+
+
+    // Getter ve Setter Metodları
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Date getDateOfMembership() {
+        return dateOfMembership;
+    }
+
+    public int getNoBooksIssued() {
+        return noBooksIssued;
+    }
+
+    public int getMaxBookLimit() {
+        return maxBookLimit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+
+    //Methods
 
     // Ödünç alınan kitap sayısını artıran metot
     public void incBookIssued() {
@@ -51,36 +89,30 @@ public abstract class MemberRecord {
         System.out.println(name + " paid a bill of " + amount);
     }
 
-    // Getter ve Setter metodları
-    public int getMemberId() {
-        return memberId;
+
+
+    @Override
+    public String toString() {
+        return "MemberRecord{" +
+                "memberId=" + memberId +
+                ", type=" + type +
+                ", dateOfMembership=" + dateOfMembership +
+                ", noBooksIssued=" + noBooksIssued +
+                ", maxBookLimit=" + maxBookLimit +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                '}';
     }
 
-    public String getType() {
-        return type;
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof MemberRecord that)) return false;
+        return memberId == that.memberId;
     }
 
-    public Date getDateOfMembership() {
-        return dateOfMembership;
-    }
-
-    public int getNoBooksIssued() {
-        return noBooksIssued;
-    }
-
-    public int getMaxBookLimit() {
-        return 5;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(memberId);
     }
 }

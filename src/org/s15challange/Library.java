@@ -1,4 +1,8 @@
 package org.s15challange;
+
+import org.s15challange.book.Book;
+import org.s15challange.person.Reader;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -8,11 +12,14 @@ public class Library {
     private Map<Integer, Book> books = new HashMap<>();
     private Set<Reader> readers = new HashSet<>();
 
+
+    //Constructors
     public Library(Map<Integer, Book> books, Set<Reader> readers) {
         this.books = books;
         this.readers = readers;
     }
 
+    //Getters
     public Map<Integer, Book> getBooks() {
         return books;
     }
@@ -21,22 +28,30 @@ public class Library {
         return readers;
     }
 
-    public void newBook(Book book){
+
+    //Methods
+
+    public void newBook(Book book) {
         books.put(book.getBookId(), book);
     }
-    public void lendBook(Book book, Reader reader){
-        if(book.getStatus() == Status.AVAILABLE) {
-            reader.borrowBook(book);}
+
+    public void lendBook(Book book, Reader reader) {
+        if (book.getStatus() == Status.AVAILABLE) {
+            reader.borrowBook(book);
+        }
+
     }
-    public void takeBackBook(Book book, Reader reader){
-      reader.returnBook(book);
+
+    public void takeBackBook(Book book, Reader reader) {
+        reader.returnBook(book);
     }
 
     public void showBooks() {
         for (Book book : books.values()) {
-            System.out.println(book.getTitle() + " by " + book.getAuthor());
+            if(book == null){
+                break;
+            } else{
+            System.out.println(book.getTitle() + " by " + book.getAuthor());}
         }
     }
-
-
 }
