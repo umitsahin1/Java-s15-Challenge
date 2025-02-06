@@ -1,4 +1,5 @@
 package org.s15challange.person;
+
 import org.s15challange.book.Book;
 
 import java.util.HashSet;
@@ -10,10 +11,11 @@ public class Author extends Person {
     private Set<Book> books = new HashSet<>();
 
     //Constructors
-    public Author(String name,Set<Book> books) {
+    public Author(String name, Set<Book> books) {
         super(name);
         this.books = books;
     }
+
     //Getters
     public Set<Book> getBooks() {
         return books;
@@ -37,6 +39,7 @@ public class Author extends Person {
         }
     }
 
+
     @Override
     public void whoYouAre() {
         System.out.println("I am Author" + getName());
@@ -54,4 +57,10 @@ public class Author extends Person {
         return Objects.hashCode(books);
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "books=" + books +
+                '}';
+    }
 }

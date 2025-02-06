@@ -12,6 +12,7 @@ public abstract class MemberRecord {
     private String address;
     private String phoneNo;
 
+
     // Constructor
     public MemberRecord(int memberId, Type type, String name, String address, String phoneNo) {
         this.memberId = memberId;
@@ -24,6 +25,8 @@ public abstract class MemberRecord {
         this.dateOfMembership = new Date();
     }
 
+    public MemberRecord() {
+    }
 
     // Getter ve Setter Metodları
     public int getMemberId() {

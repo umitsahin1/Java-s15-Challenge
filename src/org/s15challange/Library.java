@@ -54,4 +54,12 @@ public class Library {
             System.out.println(book.getTitle() + " by " + book.getAuthor());}
         }
     }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "books=" + books +
+                ", readers=" + readers +
+                '}';
+    }
 }

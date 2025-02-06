@@ -32,10 +32,14 @@ public class Reader extends Person {
 
     //Methods
     public void purchaseBook(Book book) {
-        books.add(book);
-        book.changeOwner(this);
-        book.updateStatus(Status.PURCHASED);
-        System.out.println(getName() + "Book purchased: " + book.getTitle());
+        if (book != null && book.getOwner() == null) {
+            books.add(book);
+            book.changeOwner(this);
+            book.updateStatus(Status.PURCHASED);
+            System.out.println(getName() + "Book purchased: " + book.getTitle());
+        } else {
+            System.out.println("Cannot purchased the book.");
+        }
     }
 
 

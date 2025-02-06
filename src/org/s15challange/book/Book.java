@@ -34,7 +34,9 @@ public class Book {
     }
 
     private void addBookToAuthor(Author author, Book book) {
-        author.newBook(book);
+        if (!author.getBooks().contains(book)) {
+            author.newBook(book);
+        }
     }
 
 
@@ -67,6 +69,9 @@ public class Book {
         return dailyPrice;
     }
 
+    public String getEdition() {
+        return edition;
+    }
 
     //Setters
     public void setBookId(int bookId) {
